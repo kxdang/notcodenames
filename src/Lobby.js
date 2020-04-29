@@ -25,9 +25,15 @@ const Lobby = () => {
       .split("?")[0]
       .toLowerCase()
   );
-  const uid = auth.currentUser && auth.currentUser.uid;
+  const [uid, setUid] = useState(null);
 
-
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      setUid(user.uid)
+    } else {
+      setUid(null);
+    }
+  })
 
   useEffect(() => {
     // Fetch lobby data
@@ -60,71 +66,46 @@ const Lobby = () => {
 
   // Join lobby as player
   useEffect(() => {
+    if (!uid) return;
+
     // Set state & localStorage name if not already set.
     if (!name) {
-      let newName = ""
-      setTimeout(() => {
-        newName = prompt("What is your name?", "Player");
-        if (!newName) {
-          newName = _.sample(Words);
+      let newName = prompt("What is your name?", "Player");
+      if (!newName) {
+        newName = _.sample(Words);
+      }
+
+      newName = newName.split(" ")[0]
+        .trim();
+
+      setName(newName);
+      localStorage.setItem("name", newName);
+
+    }
+
+    // Presence
+    database
+      .ref(".info/connected")
+      .on("value", snapshot => {
+        if (snapshot.val() === false) {
+          return;
         }
 
-        newName = newName.split(" ")[0]
-          .trim();
+        if (auth.currentUser && auth.currentUser.uid) {
+          const playerRef = database
+            .ref("lobby")
+            .child(lobbyId)
+            .child("players")
+            .child(auth.currentUser.uid);
 
-        setName(newName);
-        localStorage.setItem("name", newName);
-        // Presence
-        database
-          .ref(".info/connected")
-          .on("value", snapshot => {
-            if (snapshot.val() === false) {
-              return;
-            }
-
-            if (auth.currentUser && auth.currentUser.uid) {
-              const playerRef = database
-                .ref("lobby")
-                .child(lobbyId)
-                .child("players")
-                .child(auth.currentUser.uid);
-
-              playerRef
-                .onDisconnect()
-                .remove()
-                .then(() => {
-                  playerRef.set({ name: localStorage.getItem("name") });
-                })
-            }
-          });
-      }, 1000);
-    } else {
-      // Presence
-      database
-        .ref(".info/connected")
-        .on("value", snapshot => {
-          if (snapshot.val() === false) {
-            return;
-          }
-
-          if (auth.currentUser && auth.currentUser.uid) {
-            const playerRef = database
-              .ref("lobby")
-              .child(lobbyId)
-              .child("players")
-              .child(auth.currentUser.uid);
-
-
-
-            playerRef
-              .onDisconnect()
-              .remove()
-              .then(() => {
-                playerRef.set({ name: localStorage.getItem("name") });
-              })
-          }
-        });
-    }
+          playerRef
+            .onDisconnect()
+            .remove()
+            .then(() => {
+              playerRef.set({ name: localStorage.getItem("name") });
+            })
+        }
+      });
 
     // Dispose
     return () => {
@@ -140,7 +121,7 @@ const Lobby = () => {
         .off()
     };
     // eslint-disable-next-line
-  }, []);
+  }, [uid]);
 
   return (
     <div style={{ position: "relative" }}>
