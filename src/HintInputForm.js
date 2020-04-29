@@ -47,40 +47,6 @@ function HintInputForm({ spymaster, incrementTurn, lobby, team }) {
         alignItems: "center"
       }}
     >
-      {/* You are {spymaster}, pick a hint related to as many words for your team to guess */}
-      {/* <form onSubmit={submitHandler}>
-        <div className="row">
-          <div className="col">
-            <div className="form-group">
-              <input
-                name="word"
-                value={word}
-                placeholder="Enter a clue"
-                type="text"
-                onChange={e => setWord(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="col">
-            <div className="form-group">
-              <input
-                name="numOfHints"
-                value={count}
-                onChange={e => setCount(e.target.value)}
-                type="number"
-                min="0"
-              />
-            </div>
-          </div>
-          <div className="col">
-            <div className="form-group">
-              <button type="submit" className="btn-small">
-                Submit Hint
-              </button>
-            </div>
-          </div>
-        </div>
-      </form> */}
       <span>Give clue</span>
       <form className="HintInputForm" onSubmit={submitHandler}>
         <input

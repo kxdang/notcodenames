@@ -5,8 +5,6 @@ import { auth } from "./firebase";
 
 import tippy from "tippy.js";
 
-import _ from "lodash";
-
 export default function Card({
   cardName,
   cardState,
@@ -41,13 +39,11 @@ export default function Card({
 
   useEffect(() => {
     if (!hasGuess && playersHovering && playersHovering.length > 0) {
-      // console.log("hello", cardName);
       tippyInstance &&
         tippyInstance[0] &&
         tippyInstance[0].setContent(playersHovering.join(", "));
       tippyInstance && tippyInstance[0] && tippyInstance[0].show();
     } else {
-      // console.log("bye", cardName);
       tippyInstance && tippyInstance[0] && tippyInstance[0].hide();
     }
   }, [playersHovering]);

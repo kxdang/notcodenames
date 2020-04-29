@@ -19,7 +19,12 @@ export default function Board({ size }) {
     if (numRemainingRedCards === 0) return CONST_CARDS.RED;
     if (numRemainingBlueCards === 0) return CONST_CARDS.BLUE;
 
-    return null;
+    const blackCard = lobby.cards.filter(
+      x => cardState[x].actual === CONST_CARDS.BLACK
+    );
+    const winnerFromBlackOutcome = lobby.cardState && lobby.cardState[blackCard] && lobby.cardState[blackCard].guessByTeam === CONST_CARDS.RED ? CONST_CARDS.BLUE : CONST_CARDS.RED;
+
+    return winnerFromBlackOutcome;
   };
 
   const cardState = lobby.cardState;
@@ -248,6 +253,13 @@ export default function Board({ size }) {
           .child(cardName)
           .child("guessBy")
           .set(guessByName);
+        database
+          .ref("lobby")
+          .child(lobby.id)
+          .child("cardState")
+          .child(cardName)
+          .child("guessByTeam")
+          .set(lobby.teams[uid]);
       }
 
       database
@@ -360,17 +372,17 @@ export default function Board({ size }) {
             winningTeam={winningTeam}
           />
         ) : (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center"
-            }}
-          >
-            {currentTurn(lobby.gameState)}
-          </div>
-        )}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center"
+              }}
+            >
+              {currentTurn(lobby.gameState)}
+            </div>
+          )}
       </div>
 
       <div className="Board-cards Board-cards-size-5">

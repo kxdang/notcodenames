@@ -60,7 +60,7 @@ export default function SettingsModal({ lobbyId, uid }) {
             <h5>Change Name:</h5>
             <input
               type="text"
-              value={name}
+              value={name || ""}
               onChange={e => setName(e.target.value)}
               placeholder="Name Change"
               id="paperInputs1"
