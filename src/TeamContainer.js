@@ -23,15 +23,13 @@ export default function TeamContainer({ props }) {
   );
 
   const teamNeutral = playerArray.filter(player => {
-    //check if anyone has joined, if not push to neutralTeam
-    //check if you are joined and are in spymaster spot
 
     if (lobby.teams === undefined) {
-      if (player.id === lobby.spymasterBlue) {
+      if (player.id === lobby.cluegiverBlue) {
         return false;
       }
 
-      if (player.id === lobby.spymasterRed) {
+      if (player.id === lobby.cluegiverRed) {
         return false;
       }
 
@@ -42,12 +40,12 @@ export default function TeamContainer({ props }) {
       return true;
     }
 
-    if (lobby.spymasterBlue === player.id) {
+    if (lobby.cluegiverBlue === player.id) {
       return false;
     }
 
-    //check if player is in spymaster spot, I do not want them in teamNeutral,return false
-    if (lobby.spymasterRed === player.id) {
+    //check if player is in clueGiver spot, I do not want them in teamNeutral,return false
+    if (lobby.cluegiverRed === player.id) {
       return false;
     }
 
@@ -65,19 +63,19 @@ export default function TeamContainer({ props }) {
   const joinTeam = team => {
     if (lobby.state !== CONST_LOBBY_STATE.MENU) return;
 
-    if (lobby.spymasterBlue === auth.currentUser.uid) {
+    if (lobby.cluegiverBlue === auth.currentUser.uid) {
       database
         .ref("lobby")
         .child(lobby.id)
-        .child("spymasterBlue")
+        .child("cluegiverBlue")
         .remove();
     }
 
-    if (lobby.spymasterRed === auth.currentUser.uid) {
+    if (lobby.cluegiverRed === auth.currentUser.uid) {
       database
         .ref("lobby")
         .child(lobby.id)
-        .child("spymasterRed")
+        .child("cluegiverRed")
         .remove();
     }
 

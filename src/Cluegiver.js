@@ -5,7 +5,7 @@ import {
   CONST_LOBBY_STATE
 } from "./Constant";
 
-export default function Spymaster({
+export default function Cluegiver({
   team,
   player,
   lobbyState,
@@ -47,9 +47,9 @@ export default function Spymaster({
   };
 
   return (
-    <div className="Spymaster">
+    <div className="Cluegiver">
       <div
-        className="Spymaster-content"
+        className="Cluegiver-content"
         style={{
           position: "relative",
           background: getTeamColor(),

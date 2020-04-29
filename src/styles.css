@@ -84,17 +84,17 @@
   visibility: initial;
 }
 
-.Spymaster-container {
+.Cluegiver-container {
   display: flex;
   flex-direction: column;
 }
 
-.Spymaster {
+.Cluegiver {
   display: flex;
   flex: 1;
 }
 
-.Spymaster-content {
+.Cluegiver-content {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -322,7 +322,7 @@ border: hasTurn ? ".5rem dashed #ffca00" : "0px" */
     font-size: 2vw; /* Scale with respect to viewport width*/
   }
 
-  .Spymaster-container {
+  .Cluegiver-container {
     grid-row: 2;
     display: grid;
     grid-template-columns: auto auto;

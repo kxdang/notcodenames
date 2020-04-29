@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { database } from "./firebase";
 import { CONST_CARDS } from "./Constant";
 
-function HintInputForm({ spymaster, incrementTurn, lobby, team }) {
+function HintInputForm({ cluegiver, incrementTurn, lobby, team }) {
   const [word, setWord] = useState("");
   const [count, setCount] = useState(1);
 

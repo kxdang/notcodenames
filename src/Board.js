@@ -32,7 +32,7 @@ export default function Board({ size }) {
   const gameState = lobby.gameState;
   const lobbState = lobby.state;
   const uid = auth && auth.currentUser && auth.currentUser.uid;
-  const isSpymaster = lobby.spymasterRed === uid || lobby.spymasterBlue === uid;
+  const isCluegiver = lobby.cluegiverRed === uid || lobby.cluegiverBlue === uid;
 
   const incrementTurn = () => {
     if (!lobby.id) return;
@@ -94,10 +94,10 @@ export default function Board({ size }) {
   }, [gameState]);
 
   const canGiveHint =
-    (uid === lobby.spymasterRed &&
-      gameState % 4 === CONST_GAME_STATE.SPYMASTER_RED) ||
-    (uid === lobby.spymasterBlue &&
-      gameState % 4 === CONST_GAME_STATE.SPYMASTER_BLUE);
+    (uid === lobby.cluegiverRed &&
+      gameState % 4 === CONST_GAME_STATE.CLUEGIVER_RED) ||
+    (uid === lobby.cluegiverBlue &&
+      gameState % 4 === CONST_GAME_STATE.CLUEGIVER_BLUE);
 
   const blueClues = _.toArray(lobby.blueClues);
   const redClues = _.toArray(lobby.redClues);
@@ -114,12 +114,12 @@ export default function Board({ size }) {
     let role;
     let turn = gameState % 4; // the only possible values of (x mod 4) are 0, 1, 2, 3 (which are the remainders)
     switch (turn) {
-      case CONST_GAME_STATE.SPYMASTER_BLUE:
+      case CONST_GAME_STATE.CLUEGIVER_BLUE:
         if (canGiveHint) {
           role = (
             <HintInputForm
               lobby={lobby}
-              spymaster="Blue Spymaster"
+              cluegiver="Blue Cluegiver"
               team={CONST_CARDS.BLUE}
               incrementTurn={incrementTurn}
             />
@@ -154,12 +154,12 @@ export default function Board({ size }) {
           </>
         );
         break;
-      case CONST_GAME_STATE.SPYMASTER_RED:
+      case CONST_GAME_STATE.CLUEGIVER_RED:
         if (canGiveHint) {
           role = (
             <HintInputForm
               lobby={lobby}
-              spymaster="Red Spymaster"
+              cluegiver="Red cluegiver"
               team={CONST_CARDS.RED}
               incrementTurn={incrementTurn}
             />
@@ -227,7 +227,7 @@ export default function Board({ size }) {
   };
 
   const handleClick = (cardName, uid) => {
-    if (isSpymaster) return;
+    if (isCluegiver) return;
 
     const team = lobby.teams[uid];
 
@@ -354,7 +354,7 @@ export default function Board({ size }) {
       hoverState &&
       hoverState[cardName] &&
       Object.keys(hoverState[cardName])
-        .filter(x => x !== lobby.spymasterRed && x !== lobby.spymasterBlue)
+        .filter(x => x !== lobby.cluegiverRed && x !== lobby.cluegiverBlue)
         .map(
           uid => lobby.players && lobby.players[uid] && lobby.players[uid].name
         )
@@ -389,7 +389,7 @@ export default function Board({ size }) {
         {lobby.cards &&
           lobby.cards.map(card => (
             <Card
-              isSpymaster={isSpymaster}
+              isClueGiver={isCluegiver}
               cardName={card}
               key={card}
               cardState={cardState && cardState[card]}

@@ -11,8 +11,8 @@ let lobbyData = {
       team: 2
     }
   },
-  spymasterRed: "kien",
-  spymasterBlue: "tommy",
+  CluegiverRed: "kien",
+  CluegiverBlue: "tommy",
   deck: "default",
   currentSession: i1uhd129dh120dh2
 };

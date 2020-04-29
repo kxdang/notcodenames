@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { userContext } from "./userContext";
-import SpymasterContainer from "./SpymasterContainer";
+import CluegiverContainer from "./CluegiverContainer";
 import TeamContainer from "./TeamContainer";
 import StartScreen from "./StartScreen";
 import Board from "./Board";
@@ -146,7 +146,7 @@ const Lobby = () => {
         </div>
 
         <userContext.Provider value={lobby}>
-          <SpymasterContainer />
+          <CluegiverContainer />
           {lobby.state === 0 ? (
             <StartScreen lobbyId={lobbyId} />
           ) : (
