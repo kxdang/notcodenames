@@ -1,5 +1,4 @@
 import React from "react";
-import Person from "./Person";
 import {
   CONST_CARDS_CSS_COLORS,
   CONST_CARDS,
@@ -79,7 +78,7 @@ export default function Team({ team, players, lobbyState, onClick, hasTurn }) {
           }}
         >
           {takePlayers.map(player => (
-            <Person key={player.id} name={player.name} />
+            player.name
           ))}
           {hasMoreThanNPlayers && " and more..."}
         </span>

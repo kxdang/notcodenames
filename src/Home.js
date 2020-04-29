@@ -33,7 +33,7 @@ const Home = () => {
         <div className="Home-menu">
           <h1
             style={{
-              marginTop: "-4rem",
+              marginTop: "-2rem",
               fontSize: "4rem",
               background: "#fafafa",
               textAlign: "center",
