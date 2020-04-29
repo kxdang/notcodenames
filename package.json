@@ -1,0 +1,34 @@
+{
+  "name": "code-names-project",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "clipboard": "2.0.6",
+    "firebase": "7.14.2",
+    "lodash": "4.17.15",
+    "react": "16.12.0",
+    "react-confetti": "5.0.1",
+    "react-dom": "16.12.0",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "3.0.1",
+    "react-use": "14.2.0",
+    "tippy.js": "6.2.2"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

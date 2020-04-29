@@ -1,0 +1,340 @@
+.App {
+  background: #fafafa;
+  height: 100%;
+  user-select: "none";
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+:root {
+  font-family: "Noto Sans", sans-serif;
+  --green: rgba(216, 193, 149, 0.8);
+  --red: rgba(219, 20, 37, 0.8);
+  --blue: rgba(3, 90, 166, 0.8);
+  --black: rgba(39, 33, 33, 0.8);
+  height: 100%;
+}
+
+/* OVERALL LAYOUT */
+.Lobby {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 18% 64% 18%;
+  grid-template-rows: 1fr;
+}
+
+.Board {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.Board-settings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Board-settings > * {
+  display: inline-block;
+  background-color: #fff;
+  margin: 1px;
+  overflow: hidden;
+}
+
+.Board-settings > *:hover {
+  display: inline-block;
+  margin: 1px;
+}
+
+.paper-btn label {
+  cursor: pointer;
+}
+
+.Board-narrator {
+  padding-top: 1rem;
+}
+
+.Board-cards {
+  display: grid;
+  gap: 0.5rem;
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.Board-cards-size-5 {
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
+}
+
+.Card-text {
+  font-weight: bold;
+}
+
+.Card-autohide > div {
+  visibility: hidden;
+}
+
+.Card-autohide:hover > div {
+  visibility: initial;
+}
+
+.Spymaster-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Spymaster {
+  display: flex;
+  flex: 1;
+}
+
+.Spymaster-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  font-size: 1.3rem;
+  font-weight: semibold;
+  color: #fff;
+  text-align: center;
+}
+
+.Team-container {
+  display: grid;
+}
+
+.Team {
+  display: flex;
+  justify-content: center;
+  grid-template-rows: 2rem auto;
+}
+
+.Team-title {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  opacity: 50%;
+}
+
+.Team-playerName {
+  display: flex;
+  justify-content: center;
+}
+
+/* style={{
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+}}/ */
+
+/* background: getTeamColor(),
+display: "flex",
+justifyContent: "center",
+alignItems: "center",
+fontSize: "1.3rem",
+fontWeight: "semibold",
+color: "#fff",
+textAlign: "center",
+cursor: lobbyState === CONST_LOBBY_STATE.MENU ? "pointer" : "initial",
+border: hasTurn ? ".5rem dashed #ffca00" : "0px" */
+
+.role-primary {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.role-secondary {
+  font-size: 0.9rem;
+  opacity: 80%;
+  color: #333;
+}
+
+.Home {
+  position: relative;
+  height: 92vh;
+  display: flex;
+  justify-content: center;
+}
+
+.Home-menu {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  /* background: #fafafa; */
+  /* padding: 2rem; */
+}
+
+.Home-bg-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url("/front-left.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: -50px;
+  background-position-y: center;
+}
+
+.Home-bg-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url("/front-right.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: calc(100% + 50px);
+  background-position-y: center;
+}
+
+.Home-join-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Home-rules {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background: #cef7f0;
+  text-align: center;
+  padding: 3rem;
+}
+
+.Home-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background: #ffd1e3;
+  text-align: center;
+  padding: 3rem;
+}
+
+.Home-feedback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background: #f1ebaf;
+  text-align: center;
+  padding: 3rem;
+}
+
+.StartScreen-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.HintInputForm {
+  display: flex;
+  align-items: center;
+}
+.btn-success {
+  background-color: #cef7f0 !important;
+  border-color: #a5c7c2 !important;
+}
+
+.btn-end {
+  margin-left: 2rem;
+  background-color: #d4b0ffb6 !important;
+  border-color: #a582d1 !important;
+}
+
+.btn-submit {
+  background-color: #d4b0ffb6 !important;
+  border-color: #a582d1 !important;
+}
+
+.numInput:focus,
+.numInput:hover,
+.wordInput:focus,
+.wordInput:hover {
+  border: 2px solid #a582d1;
+}
+
+.StartScreen-list li::before {
+  content: "";
+}
+.nav-brand a {
+  border-bottom: 2px solid #41403e;
+}
+
+.nav-brand a:hover {
+  border-bottom: 2px solid #c1c0bd;
+}
+
+.inline a {
+  border-bottom: 2px solid #41403e;
+}
+
+.inline a:hover {
+  border-bottom: 2px solid #c1c0bd;
+}
+
+@media only screen and (max-width: 1024px) {
+  .Lobby {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 0.75fr auto;
+  }
+
+  .StartScreen-container {
+    grid-column: 1/3; /* Spymaster container and Team container explicitly sets grid-row so two cols created */
+  }
+
+  .Board {
+    grid-column: 1/3; /* Spymaster container and Team container explicitly sets grid-row so two cols created */
+  }
+
+  .Board-cards {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.4rem;
+  }
+
+  .Card-text {
+    font-size: 2vw; /* Scale with respect to viewport width*/
+  }
+
+  .Spymaster-container {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  .Team-container {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  .Team:last-child {
+    display: none;
+  }
+}
