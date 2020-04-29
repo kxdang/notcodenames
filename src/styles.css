@@ -156,7 +156,7 @@ border: hasTurn ? ".5rem dashed #ffca00" : "0px" */
 
 .role-secondary {
   font-size: 0.9rem;
-  opacity: 80%;
+  opacity: 0.8;
   color: #333;
 }
 
