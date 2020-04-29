@@ -23,9 +23,9 @@ function HintInputForm({ spymaster, incrementTurn, lobby, team }) {
     const cleanWord =
       word.length > 0
         ? word
-            .split(" ")[0]
-            .trim()
-            .toLowerCase()
+          .split(" ")[0]
+          .trim()
+          .toLowerCase()
         : "";
 
     database
