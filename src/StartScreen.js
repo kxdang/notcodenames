@@ -133,7 +133,7 @@ export default function StartScreen({ lobbyId }) {
         </li>
       </ul>
       <button
-        className="btn-secondary"
+        className="btn-success btn-large"
         onClick={startGame}
         disabled={!canStart}
       >
