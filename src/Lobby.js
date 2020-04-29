@@ -30,8 +30,6 @@ const Lobby = () => {
   auth.onAuthStateChanged((user) => {
     if (user) {
       setUid(user.uid)
-    } else {
-      setUid(null);
     }
   })
 
@@ -80,10 +78,10 @@ const Lobby = () => {
           setName(newName);
           localStorage.setItem("name", newName);
 
-          resolve();
+          resolve(newName);
         }, 1000);
       } else {
-        resolve();
+        resolve(name);
       }
     });
   }
@@ -91,8 +89,8 @@ const Lobby = () => {
   // Join lobby as player
   useEffect(() => {
     if (!uid) return;
-
-    askForNameIfNeeded().then(() => {
+    console.log("asdf")
+    askForNameIfNeeded().then(newName => {
       // Set Presence
       database
         .ref(".info/connected")
@@ -101,18 +99,18 @@ const Lobby = () => {
             return;
           }
 
-          if (auth.currentUser && auth.currentUser.uid) {
+          if (lobbyId && uid) {
             const playerRef = database
               .ref("lobby")
               .child(lobbyId)
               .child("players")
-              .child(auth.currentUser.uid);
+              .child(uid);
 
             playerRef
               .onDisconnect()
               .remove()
               .then(() => {
-                playerRef.set({ name });
+                playerRef.set({ name: newName });
               })
           }
         });
@@ -124,7 +122,7 @@ const Lobby = () => {
         .ref("lobby")
         .child(lobbyId)
         .child("players")
-        .child(auth.currentUser.uid)
+        .child(uid)
         .remove();
 
       database
