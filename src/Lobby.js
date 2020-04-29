@@ -111,9 +111,7 @@ const Lobby = () => {
     <div style={{ position: "relative" }}>
       <div className="Lobby">
         <div className="Board-settings">
-          <form action="/">
-            <button className="btn-small">Home</button>
-          </form>
+          <button className="btn-small" onClick={() => window.location.href = '/'}>Home</button>
           <button
             className="btn-small"
             onClick={() => (document.getElementById("modal-1").checked = true)}
@@ -127,8 +125,8 @@ const Lobby = () => {
           {lobby.state === 0 ? (
             <StartScreen lobbyId={lobbyId} />
           ) : (
-            <Board size={5} />
-          )}
+              <Board size={5} />
+            )}
           <TeamContainer />
         </userContext.Provider>
       </div>
