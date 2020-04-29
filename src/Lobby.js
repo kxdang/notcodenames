@@ -64,48 +64,59 @@ const Lobby = () => {
     // eslint-disable-next-line
   }, [])
 
+  const askForNameIfNeeded = () => {
+    return new Promise((resolve) => {
+      if (!name) {
+        // Wait one second so that other UI (lobby, board, teams) can render before we show our blocking prompt
+        setTimeout(() => {
+          let newName = prompt("What is your name?", "Player");
+          if (!newName) {
+            newName = _.sample(Words);
+          }
+
+          newName = newName.split(" ")[0]
+            .trim();
+
+          setName(newName);
+          localStorage.setItem("name", newName);
+
+          resolve();
+        }, 1000);
+      } else {
+        resolve();
+      }
+    });
+  }
+
   // Join lobby as player
   useEffect(() => {
     if (!uid) return;
 
-    // Set state & localStorage name if not already set.
-    if (!name) {
-      let newName = prompt("What is your name?", "Player");
-      if (!newName) {
-        newName = _.sample(Words);
-      }
+    askForNameIfNeeded().then(() => {
+      // Set Presence
+      database
+        .ref(".info/connected")
+        .on("value", snapshot => {
+          if (snapshot.val() === false) {
+            return;
+          }
 
-      newName = newName.split(" ")[0]
-        .trim();
+          if (auth.currentUser && auth.currentUser.uid) {
+            const playerRef = database
+              .ref("lobby")
+              .child(lobbyId)
+              .child("players")
+              .child(auth.currentUser.uid);
 
-      setName(newName);
-      localStorage.setItem("name", newName);
-
-    }
-
-    // Presence
-    database
-      .ref(".info/connected")
-      .on("value", snapshot => {
-        if (snapshot.val() === false) {
-          return;
-        }
-
-        if (auth.currentUser && auth.currentUser.uid) {
-          const playerRef = database
-            .ref("lobby")
-            .child(lobbyId)
-            .child("players")
-            .child(auth.currentUser.uid);
-
-          playerRef
-            .onDisconnect()
-            .remove()
-            .then(() => {
-              playerRef.set({ name: localStorage.getItem("name") });
-            })
-        }
-      });
+            playerRef
+              .onDisconnect()
+              .remove()
+              .then(() => {
+                playerRef.set({ name });
+              })
+          }
+        });
+    });
 
     // Dispose
     return () => {
