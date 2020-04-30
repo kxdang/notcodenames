@@ -297,6 +297,10 @@ border: hasTurn ? ".5rem dashed #ffca00" : "0px" */
   border-bottom: 2px solid #c1c0bd;
 }
 
+.modal{
+  z-index: 10000;
+}
+
 @media only screen and (max-width: 1024px) {
   .Lobby {
     display: grid;
@@ -336,5 +340,9 @@ border: hasTurn ? ".5rem dashed #ffca00" : "0px" */
 
   .Team:last-child {
     display: none;
+  }
+  
+  .modal{
+    z-index: 10000;
   }
 }
