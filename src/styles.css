@@ -32,9 +32,9 @@
 }
 .Board-settings {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 95vh;
+  left: 19.5vw;
+  right: 19.5vw;
   z-index: 2;
   display: flex;
   justify-content: space-between;
@@ -323,6 +323,12 @@ border: hasTurn ? ".5rem dashed #ffca00" : "0px" */
 
   .Board {
     grid-column: 1/3; /* Spymaster container and Team container explicitly sets grid-row so two cols created */
+  }
+
+  .Board-settings {
+    top: 65vh;
+    left: 0;
+    right: 0;
   }
 
   .Board-cards {
