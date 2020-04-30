@@ -30,7 +30,7 @@ export default function Board({ size }) {
   const cardState = lobby.cardState;
   const hoverState = lobby.hoverState;
   const gameState = lobby.gameState;
-  const lobbState = lobby.state;
+  const lobbyState = lobby.state;
   const uid = auth && auth.currentUser && auth.currentUser.uid;
   const isCluegiver = lobby.cluegiverRed === uid || lobby.cluegiverBlue === uid;
 
@@ -389,7 +389,7 @@ export default function Board({ size }) {
         {lobby.cards &&
           lobby.cards.map(card => (
             <Card
-              isClueGiver={isCluegiver}
+              isCluegiver={isCluegiver}
               cardName={card}
               key={card}
               cardState={cardState && cardState[card]}
