@@ -401,6 +401,7 @@ export default function Board({ size }) {
             />
           ))}
       </div>
+      <div style={{ display: "flex", justifyContent: "center", fontSize: "1.2rem", paddingBottom: "1rem" }}><div>Cards remaining:{"  "}<span style={{ color: "var(--blue)" }}>{numRemainingBlueCards}</span> - <span style={{ color: "var(--red)" }}>{numRemainingRedCards}</span></div></div>
     </div>
   );
 }

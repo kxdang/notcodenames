@@ -68,8 +68,8 @@
 }
 
 .Board-cards-size-5 {
-  grid-template-columns: repeat(5, auto);
-  grid-template-rows: repeat(5, auto);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
 }
 
 .Card-text {
