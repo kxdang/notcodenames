@@ -50,7 +50,7 @@ function HintInputForm({ cluegiver, incrementTurn, lobby, team }) {
       <span>Give clue</span>
       <form className="HintInputForm" onSubmit={submitHandler}>
         <input
-          className={getTeam() === "blueClues" ? "wordInputBlue" : "wordInputRed"}
+          className={getTeam(team) === "blueClues" ? "wordInputBlue" : "wordInputRed"}
           type="text"
           style={{ margin: "0 5px" }}
           value={word}
@@ -61,7 +61,7 @@ function HintInputForm({ cluegiver, incrementTurn, lobby, team }) {
         />
         <span>with</span>
         <input
-          className={getTeam() === "blueClues" ? "numInputBlue" : "numInputRed"}
+          className={getTeam(team) === "blueClues" ? "numInputBlue" : "numInputRed"}
           type="number"
           style={{ margin: "0 5px", width: "70px" }}
           value={count}
@@ -71,7 +71,7 @@ function HintInputForm({ cluegiver, incrementTurn, lobby, team }) {
         <span>occurences</span>
         <button
           style={{ margin: "0 5px", padding: "10px" }}
-          className={getTeam() === "blueClues" ? "btn-secondary" : "btn-danger"}
+          className={getTeam(team) === "blueClues" ? "btn-secondary" : "btn-danger"}
           onClick={submitHandler}
         >
           Submit Hint
