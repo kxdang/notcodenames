@@ -89,7 +89,6 @@ const Lobby = () => {
   // Join lobby as player
   useEffect(() => {
     if (!uid) return;
-    console.log("asdf")
     askForNameIfNeeded().then(newName => {
       // Set Presence
       database

@@ -15,6 +15,7 @@ export default function Board({ size }) {
   const [numRemainingRedCards, setNumRemainingRedCards] = useState(Infinity);
   const [numRemainingBlueCards, setNumRemainingBlueCards] = useState(Infinity);
 
+
   const winningTeam = () => {
     if (numRemainingRedCards === 0) return CONST_CARDS.RED;
     if (numRemainingBlueCards === 0) return CONST_CARDS.BLUE;
@@ -92,6 +93,16 @@ export default function Board({ size }) {
       }
     }
   }, [gameState]);
+
+  useEffect(() => {
+    if (numRemainingBlueCards === 0) {
+      endGame();
+    }
+
+    if (numRemainingRedCards === 0) {
+      endGame();
+    }
+  }, [numRemainingBlueCards, numRemainingRedCards]);
 
   const canGiveHint =
     (uid === lobby.cluegiverRed &&
@@ -273,9 +284,24 @@ export default function Board({ size }) {
           const ifGuessBlack =
             cardState && cardState[cardName].actual === CONST_CARDS.BLACK;
 
+          const ifGuessRed =
+            cardState && cardState[cardName].actual === CONST_CARDS.RED;
+
+          const ifGuessBlue =
+            cardState && cardState[cardName].actual === CONST_CARDS.BLUE;
+
           if (ifGuessBlack) {
             endGame();
           }
+
+          if (ifGuessRed) {
+            setNumRemainingRedCards(numRemainingRedCards - 1)
+          }
+
+          if (ifGuessBlue) {
+            setNumRemainingBlueCards(numRemainingBlueCards - 1)
+          }
+
 
           const isGuessRight =
             cardState &&
