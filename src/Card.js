@@ -104,7 +104,7 @@ export default function Card({
           }}
         >
           <span style={{ color: "#333", fontSize: ".6rem" }}>
-            {isGuessCorrect ? "Correct" : "Incorrect"} guess by
+            {isGuessCorrect ? "Correct" : "Incorrect"} guess "{cardName}" by
           </span>
           <br /> {cardState["guessBy"]}
         </div>
