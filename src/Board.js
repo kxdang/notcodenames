@@ -392,6 +392,7 @@ export default function Board({ size }) {
               isCluegiver={isCluegiver}
               cardName={card}
               key={card}
+              gameState={gameState}
               cardState={cardState && cardState[card]}
               playersHovering={playersHovering(card)}
               onMouseEnter={onMouseEnter}

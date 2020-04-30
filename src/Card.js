@@ -13,7 +13,7 @@ export default function Card({
   onMouseLeave,
   handleClick,
   isCluegiver,
-  guesser
+  gameState
 }) {
   const [tippyInstance, setTippyInstance] = useState(null);
   const [hasGuess, setHasGuess] = useState(null);
@@ -54,6 +54,10 @@ export default function Card({
       tippyInstance && tippyInstance[0] && tippyInstance[0].hide();
     }
   }, [cardState]);
+
+  useEffect(() => {
+    tippyInstance && tippyInstance[0] && tippyInstance[0].hide();
+  }, [gameState]);
 
   const getColorForGuess = () => {
     if (!isCluegiver && !cardState["guess"]) return "#dbdbdb";
