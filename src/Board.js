@@ -365,7 +365,7 @@ export default function Board({ size }) {
   return (
     <div className="Board">
       <div className="Board-narrator">
-        {lobbState === CONST_LOBBY_STATE.GAMEOVER ? (
+        {lobbyState === CONST_LOBBY_STATE.GAMEOVER ? (
           <GameOverlay
             pickNewTeams={pickNewTeams}
             restartGame={restartGame}
