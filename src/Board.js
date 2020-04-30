@@ -15,6 +15,7 @@ export default function Board({ size }) {
   const [numRemainingRedCards, setNumRemainingRedCards] = useState(Infinity);
   const [numRemainingBlueCards, setNumRemainingBlueCards] = useState(Infinity);
 
+
   const winningTeam = () => {
     if (numRemainingRedCards === 0) return CONST_CARDS.RED;
     if (numRemainingBlueCards === 0) return CONST_CARDS.BLUE;
@@ -91,7 +92,7 @@ export default function Board({ size }) {
         endGame();
       }
     }
-  }, [gameState]);
+  }, [gameState, cardState]);
 
   const canGiveHint =
     (uid === lobby.cluegiverRed &&
@@ -127,7 +128,6 @@ export default function Board({ size }) {
         } else {
           role = `Waiting for Blue Cluegiver to provide a clue`;
         }
-
         break;
       case CONST_GAME_STATE.PLAYER_BLUE:
         const word = blueClues && _.last(blueClues).word;
