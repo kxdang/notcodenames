@@ -255,10 +255,11 @@ border: hasTurn ? ".5rem dashed #ffca00" : "0px" */
   display: flex;
   align-items: center;
 }
-.btn-success {
+/* .btn-success {
   background-color: #cef7f0 !important;
   border-color: #a5c7c2 !important;
-}
+} */
+
 
 .btn-end {
   margin-left: 2rem;
@@ -266,16 +267,24 @@ border: hasTurn ? ".5rem dashed #ffca00" : "0px" */
   border-color: #a582d1 !important;
 }
 
-.btn-submit {
+/* .btn-submit {
   background-color: #d4b0ffb6 !important;
   border-color: #a582d1 !important;
+} */
+
+
+.numInputBlue:focus,
+.numInputBlue:hover,
+.wordInputBlue:focus,
+.wordInputBlue:hover {
+  border: 2px solid #0071de;
 }
 
-.numInput:focus,
-.numInput:hover,
-.wordInput:focus,
-.wordInput:hover {
-  border: 2px solid #a582d1;
+.numInputRed:focus,
+.numInputRed:hover,
+.wordInputRed:focus,
+.wordInputRed:hover {
+  border: 2px solid #a7342d;
 }
 
 .StartScreen-list li::before {
