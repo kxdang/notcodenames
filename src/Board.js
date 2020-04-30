@@ -128,7 +128,6 @@ export default function Board({ size }) {
         } else {
           role = `Waiting for Blue Cluegiver to provide a clue`;
         }
-
         break;
       case CONST_GAME_STATE.PLAYER_BLUE:
         const word = blueClues && _.last(blueClues).word;
