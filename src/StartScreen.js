@@ -40,10 +40,10 @@ export default function StartScreen({ lobbyId }) {
     return cardState;
   };
 
-  const hasRedSpymaster =
-    lobby.spymasterRed && lobby.players && lobby.players[lobby.spymasterRed];
-  const hasBlueSpymaster =
-    lobby.spymasterBlue && lobby.players && lobby.players[lobby.spymasterBlue];
+  const hasRedCluegiver =
+    lobby.cluegiverRed && lobby.players && lobby.players[lobby.cluegiverRed];
+  const hasBlueCluegiver =
+    lobby.cluegiverBlue && lobby.players && lobby.players[lobby.cluegiverBlue];
   const playerArray = [];
   _.forEach(lobby.players, (value, key) => {
     playerArray.push({ id: key, name: value.name });
@@ -60,11 +60,11 @@ export default function StartScreen({ lobbyId }) {
     ).length > 0;
 
   const canStart =
-    hasRedSpymaster && hasBlueSpymaster && hasRedPlayers && hasBluePlayers;
+    hasRedCluegiver && hasBlueCluegiver && hasRedPlayers && hasBluePlayers;
 
   const startGame = () => {
-    if (!hasRedSpymaster) return;
-    if (!hasBlueSpymaster) return;
+    if (!hasRedCluegiver) return;
+    if (!hasBlueCluegiver) return;
     if (!hasRedPlayers) return;
     if (!hasBluePlayers) return;
 
@@ -79,7 +79,7 @@ export default function StartScreen({ lobbyId }) {
         state: CONST_LOBBY_STATE.LIVE,
         cards: shuffledCards,
         cardState,
-        gameState: CONST_GAME_STATE.SPYMASTER_BLUE
+        gameState: CONST_GAME_STATE.CLUEGIVER_BLUE
       });
   };
 
@@ -119,11 +119,11 @@ export default function StartScreen({ lobbyId }) {
 
       <ul className="StartScreen-list">
         <li>
-          {hasBlueSpymaster ? "✔️" : "❌"} Someone needs to be the Blue
+          {hasBlueCluegiver ? "✔️" : "❌"} Someone needs to be the Blue
           Cluegiver
         </li>
         <li>
-          {hasRedSpymaster ? "✔️" : "❌"} Someone needs to be the Red Cluegiver
+          {hasRedCluegiver ? "✔️" : "❌"} Someone needs to be the Red Cluegiver
         </li>
         <li>
           {hasBluePlayers ? "✔️" : "❌"} At least one player on the Blue Guesser

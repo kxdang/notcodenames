@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Spymaster from "./Spymaster";
+import Cluegiver from "./Cluegiver";
 import { CONST_CARDS, CONST_GAME_STATE, CONST_LOBBY_STATE } from "./Constant";
 import { userContext } from "./userContext";
 
@@ -7,22 +7,22 @@ import _ from "lodash";
 
 import { database, auth } from "./firebase";
 
-export default function SpymasterContainer() {
+export default function CluegiverContainer() {
   const lobby = useContext(userContext);
 
-  const spymasterRed =
-    lobby.players && lobby.spymasterRed
-      ? lobby.players[lobby.spymasterRed]
+  const cluegiverRed =
+    lobby.players && lobby.cluegiverRed
+      ? lobby.players[lobby.cluegiverRed]
       : null;
-  const spymasterBlue =
-    lobby.players && lobby.spymasterBlue
-      ? lobby.players[lobby.spymasterBlue]
+  const cluegiverBlue =
+    lobby.players && lobby.cluegiverBlue
+      ? lobby.players[lobby.cluegiverBlue]
       : null;
 
-  const spymasterBlueTurn =
-    lobby.gameState % 4 === CONST_GAME_STATE.SPYMASTER_BLUE;
-  const spymasterRedTurn =
-    lobby.gameState % 4 === CONST_GAME_STATE.SPYMASTER_RED;
+  const cluegiverBlueTurn =
+    lobby.gameState % 4 === CONST_GAME_STATE.CLUEGIVER_BLUE;
+  const cluegiverRedTurn =
+    lobby.gameState % 4 === CONST_GAME_STATE.CLUEGIVER_RED;
 
   const blueClues = _.toArray(lobby.blueClues);
   const redClues = _.toArray(lobby.redClues);
@@ -32,9 +32,9 @@ export default function SpymasterContainer() {
   const getTeamId = team => {
     switch (team) {
       case CONST_CARDS.RED:
-        return "spymasterRed";
+        return "cluegiverRed";
       case CONST_CARDS.BLUE:
-        return "spymasterBlue";
+        return "cluegiverBlue";
       default:
         return "";
     }
@@ -46,7 +46,7 @@ export default function SpymasterContainer() {
 
     // if user is already a spymaster, remove itself
     if (team === CONST_CARDS.RED) {
-      if (lobby.spymasterBlue === auth.currentUser.uid) {
+      if (lobby.cluegiverBlue === auth.currentUser.uid) {
         database
           .ref("lobby")
           .child(lobby.id)
@@ -54,7 +54,7 @@ export default function SpymasterContainer() {
           .remove();
       }
     } else if (team === CONST_CARDS.BLUE) {
-      if (lobby.spymasterRed === auth.currentUser.uid) {
+      if (lobby.cluegiverRed === auth.currentUser.uid) {
         database
           .ref("lobby")
           .child(lobby.id)
@@ -80,23 +80,23 @@ export default function SpymasterContainer() {
   };
 
   return (
-    <div className="Spymaster-container">
-      <Spymaster
+    <div className="Cluegiver-container">
+      <Cluegiver
         team={CONST_CARDS.BLUE}
-        player={spymasterBlue}
+        player={cluegiverBlue}
         lobbyId={lobby.id}
         lobbyState={lobby.state}
         onClick={() => joinTeam(CONST_CARDS.BLUE)}
-        hasTurn={spymasterBlueTurn}
+        hasTurn={cluegiverBlueTurn}
         lastClue={lastBlueClue}
       />
-      <Spymaster
+      <Cluegiver
         team={CONST_CARDS.RED}
-        player={spymasterRed}
+        player={cluegiverRed}
         lobbyId={lobby.id}
         lobbyState={lobby.state}
         onClick={() => joinTeam(CONST_CARDS.RED)}
-        hasTurn={spymasterRedTurn}
+        hasTurn={cluegiverRedTurn}
         lastClue={lastRedClue}
       />
     </div>

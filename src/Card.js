@@ -12,7 +12,7 @@ export default function Card({
   onMouseEnter,
   onMouseLeave,
   handleClick,
-  isSpymaster,
+  isCluegiver,
   guesser
 }) {
   const [tippyInstance, setTippyInstance] = useState(null);
@@ -32,7 +32,7 @@ export default function Card({
       })
     );
 
-    if (isSpymaster && cardState["actual"] === CONST_CARDS.BLACK) {
+    if (isCluegiver && cardState["actual"] === CONST_CARDS.BLACK) {
       setShowSkull(true);
     }
   }, []);
@@ -56,7 +56,7 @@ export default function Card({
   }, [cardState]);
 
   const getColorForGuess = () => {
-    if (!isSpymaster && !cardState["guess"]) return "#dbdbdb";
+    if (!isCluegiver && !cardState["guess"]) return "#dbdbdb";
 
     switch (cardState["actual"]) {
       case CONST_CARDS.NEUTRAL:
@@ -120,9 +120,9 @@ export default function Card({
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
-          backgroundColor: isSpymaster ? "#dbdbdb" : getColorForGuess(),
+          backgroundColor: isCluegiver ? "#dbdbdb" : getColorForGuess(),
           overflow: "hidden",
-          cursor: isSpymaster ? "initial" : "pointer",
+          cursor: isCluegiver ? "initial" : "pointer",
           border:
             playersHovering && playersHovering.length > 0
               ? "2px solid #777"

@@ -146,7 +146,7 @@ const Home = () => {
       <section className="Home-about">
         <h2>About Not Codenames</h2>
         <div>
-          <i>Not Codenames</i> is like <i>Codenames</i>but not.
+          <i>Not Codenames</i> is like <i>Codenames </i>but not.
         </div>
       </section>
       <section className="Home-feedback">
