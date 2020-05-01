@@ -74,7 +74,7 @@ function HintInputForm({ cluegiver, incrementTurn, lobby, team }) {
           className={getTeam(team) === "blueClues" ? "btn-secondary" : "btn-danger"}
           onClick={submitHandler}
         >
-          Submit Hint
+          Submit Clue
         </button>
       </form>
     </div>

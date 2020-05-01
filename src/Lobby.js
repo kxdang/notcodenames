@@ -12,6 +12,7 @@ import Words from "./Words";
 
 import { database, auth } from "./firebase";
 import { CONST_LOBBY_STATE } from "./Constant";
+import HowToPlayModal from "./HowToPlayModal";
 
 const Lobby = () => {
   const history = useHistory();
@@ -138,10 +139,16 @@ const Lobby = () => {
           <button className="btn-small" onClick={() => window.location.href = '/'}>Home</button>
           <button
             className="btn-small"
+            onClick={() => (document.getElementById("modal-2").checked = true)}
+            style={{ marginLeft: "auto", marginRight: "3px" }}>
+            How to play</button>
+          <button
+            className="btn-small"
             onClick={() => (document.getElementById("modal-1").checked = true)}
           >
             Settings
           </button>
+
         </div>
 
         <userContext.Provider value={lobby}>
@@ -155,6 +162,7 @@ const Lobby = () => {
         </userContext.Provider>
       </div>
       <SettingsModal lobbyId={lobbyId} uid={uid} lobby={lobby} />
+      <HowToPlayModal />
     </div>
   );
 };
