@@ -32,7 +32,7 @@
 }
 .Board-settings {
   position: absolute;
-  top: 95vh;
+  top: 94vh;
   left: 19.5vw;
   right: 19.5vw;
   z-index: 2;
@@ -40,9 +40,10 @@
   justify-content: space-between;
 }
 
+
 .Board-settings > * {
   display: inline-block;
-  background-color: #fff;
+  background-color:none;
   margin: 1px;
   overflow: hidden;
 }
@@ -50,7 +51,10 @@
 .Board-settings > *:hover {
   display: inline-block;
   margin: 1px;
+ 
 }
+
+
 
 .paper-btn label {
   cursor: pointer;
