@@ -35,11 +35,11 @@ export default function HowToPlayModal() {
                      </label>
                     <h4 className="modal-title">how to play</h4>
                     <h5 className="modal-subtitle" style={{ color: "#4d3e3e", fontWeight: "bold" }}>Cluegivers:</h5>
-                    <p>Give a one word clue and the number of cards for your team to guess.<br></br>Try connecting multiple words with your clue!</p>
+                    <p>Give a one word clue and the number of cards for your team to guess.<br></br>Try connecting multiple words with your clue and avoid the death card💀!</p>
 
 
                     <h5 className="modal-subtitle" style={{ color: "#4d3e3e", fontWeight: "bold" }}>Guessers:</h5>
-                    <p>Select the cards you think your cluegiver wanted you to guess<br></br> Discuss amongst your team!</p>
+                    <p>Select the cards you think your cluegiver wanted you to guess.<br></br> Discuss amongst your team!</p>
 
 
                     <button className="btn-save" onClick={handleClick}>
