@@ -136,7 +136,7 @@ const Lobby = () => {
     <div style={{ position: "relative" }}>
       <div className="Lobby">
         <div className="Board-settings">
-          <button className="btn-small" onClick={() => window.location.href = '/'}>Home</button>
+          <button className="btn-small" onClick={() => history.push("/")}>Home</button>
           <button
             className="btn-small"
             onClick={() => (document.getElementById("modal-2").checked = true)}
@@ -163,7 +163,7 @@ const Lobby = () => {
       </div>
       <SettingsModal lobbyId={lobbyId} uid={uid} lobby={lobby} />
       <HowToPlayModal />
-    </div>
+    </div >
   );
 };
 

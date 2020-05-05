@@ -255,6 +255,11 @@ border: hasTurn ? ".5rem dashed #ffca00" : "0px" */
   align-items: center;
 }
 
+.btn-teal {
+  background: #cef7f0 !important;
+  border-color: #a5c7c2 !important;
+}
+
 .HintInputForm {
   display: flex;
   align-items: center;
