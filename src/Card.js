@@ -125,7 +125,7 @@ export default function Card({
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
-          backgroundColor: isCluegiver ? "#dbdbdb" : getColorForGuess(),
+          backgroundColor: hintToggle ? getColorForGuess() : "#dbdbdb",
           overflow: "hidden",
           cursor: isCluegiver ? "initial" : "pointer",
           border:
@@ -140,7 +140,7 @@ export default function Card({
         <div style={{ color: hintToggle ? getColorForGuess() : "#dbdbdb" }}>▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</div>
         <div>
           {showSkull && "☠️"}
-          <span className="Card-text">{cardName}</span>
+          <span className="Card-text" style={{ color: hintToggle && isCluegiver ? "#FFF" : "rgba(39, 33, 33, 0.8)" }} >{cardName}</span>
           {showSkull && "☠️"}
         </div>
         <div style={{ color: hintToggle ? getColorForGuess() : "#dbdbdb" }}>▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</div>

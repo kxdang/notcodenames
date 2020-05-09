@@ -53,7 +53,7 @@ export default function Cluegiver({
           {player ? player.name : "Click to join"}
         </div>
         <div className="role-secondary">as {getTeamName()} Cluegiver</div>
-        {isCluegiver ? <button className="btn-small" onClick={hintToggle}>Toggle Card Hints</button> : ""}
+        {isCluegiver ? <div style={{ fontSize: "1rem", cursor: "pointer" }} onClick={hintToggle}>👁</div> : ""}
       </div>
     );
   };
