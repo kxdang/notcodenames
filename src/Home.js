@@ -75,7 +75,7 @@ const Home = () => {
               </form>
             </div>
             <div className="row">or</div>
-            <button className="btn-success" onClick={newGame}>
+            <button className="btn-success btn-teal" onClick={newGame}>
               Start a new game
             </button>
           </div>
@@ -121,7 +121,7 @@ const Home = () => {
           🟫 cards are neutral, if you reveal this card then your turn ends
           immediately. <br />
           <br />
-          The ⬛ card will cause your team to lose immediately and end the game.
+          ⬛ card will cause your team to lose immediately and end the game ☠.
         </div>
 
         {/* <div className="container">
