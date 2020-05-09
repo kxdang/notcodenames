@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { userContext } from "./userContext";
 import {
   CONST_CARDS_CSS_COLORS,
   CONST_CARDS,
@@ -10,12 +11,16 @@ import { database, auth } from "./firebase";
 export default function Cluegiver({
   team,
   player,
-  lobbyState,
+  lobby,
   onClick,
   hasTurn,
   lastClue,
   hintToggle,
 }) {
+
+  const uid = auth && auth.currentUser && auth.currentUser.uid;
+  const isCluegiver = lobby.cluegiverRed === uid || lobby.cluegiverBlue === uid
+
   const getTeamName = () => {
     switch (team) {
       case CONST_CARDS.RED:
@@ -26,6 +31,7 @@ export default function Cluegiver({
         return "";
     }
   };
+
 
   const getTeamColor = () => {
     switch (team) {
@@ -38,7 +44,7 @@ export default function Cluegiver({
     }
   };
 
-  const uid = auth && auth.currentUser && auth.currentUser.uid;
+
 
   const getContent = () => {
     return (
@@ -47,7 +53,7 @@ export default function Cluegiver({
           {player ? player.name : "Click to join"}
         </div>
         <div className="role-secondary">as {getTeamName()} Cluegiver</div>
-        <button onClick={hintToggle}>Toggle Colours</button>
+        {isCluegiver ? <button onClick={hintToggle}>Toggle Colours</button> : ""}
       </div>
     );
   };
@@ -59,7 +65,7 @@ export default function Cluegiver({
         style={{
           position: "relative",
           background: getTeamColor(),
-          cursor: lobbyState === CONST_LOBBY_STATE.MENU ? "pointer" : "initial",
+          cursor: lobby.state === CONST_LOBBY_STATE.MENU ? "pointer" : "initial",
           border: hasTurn ? "0.3rem solid rgba(255, 202, 0, 0.9)" : "0px"
         }}
         onClick={onClick}

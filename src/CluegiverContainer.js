@@ -85,7 +85,7 @@ export default function CluegiverContainer({ hintToggle }) {
         team={CONST_CARDS.BLUE}
         player={cluegiverBlue}
         lobbyId={lobby.id}
-        lobbyState={lobby.state}
+        lobby={lobby}
         onClick={() => joinTeam(CONST_CARDS.BLUE)}
         hasTurn={cluegiverBlueTurn}
         lastClue={lastBlueClue}
@@ -95,7 +95,7 @@ export default function CluegiverContainer({ hintToggle }) {
         team={CONST_CARDS.RED}
         player={cluegiverRed}
         lobbyId={lobby.id}
-        lobbyState={lobby.state}
+        lobby={lobby}
         onClick={() => joinTeam(CONST_CARDS.RED)}
         hasTurn={cluegiverRedTurn}
         lastClue={lastRedClue}
