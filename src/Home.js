@@ -151,6 +151,7 @@ const Home = () => {
       </section>
       <section className="Home-feedback">
         <h2>Enjoy Playing or have a Feature request?</h2>
+        <h4>Please feel free to contribute <a href="https://github.com/kxdang/notcodenames">here</a> or:</h4>
         <a
           href="https://www.buymeacoffee.com/notcodenames"
           target="_blank"
