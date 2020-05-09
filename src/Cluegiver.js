@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { userContext } from "./userContext";
 import {
   CONST_CARDS_CSS_COLORS,
@@ -53,10 +53,11 @@ export default function Cluegiver({
           {player ? player.name : "Click to join"}
         </div>
         <div className="role-secondary">as {getTeamName()} Cluegiver</div>
-        {isCluegiver ? <div style={{ fontSize: "1rem", cursor: "pointer" }} onClick={hintToggle}>👁</div> : ""}
+        {/* {isCluegiverRed ? <div style={{ fontSize: "1rem", cursor: "pointer" }} onClick={hintToggle}>👁</div> : ""} */}
       </div>
     );
   };
+
 
   return (
     <div className="Cluegiver">
@@ -71,6 +72,7 @@ export default function Cluegiver({
         onClick={onClick}
       >
         {getContent()}
+        {isCluegiver && <div style={{ fontSize: "1rem", cursor: "pointer" }} onClick={hintToggle}>👁</div>}
 
         <div
           style={{
