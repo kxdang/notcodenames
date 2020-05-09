@@ -7,7 +7,7 @@ import _ from "lodash";
 
 import { database, auth } from "./firebase";
 
-export default function CluegiverContainer() {
+export default function CluegiverContainer({ hintToggle }) {
   const lobby = useContext(userContext);
 
   const cluegiverRed =
@@ -89,6 +89,7 @@ export default function CluegiverContainer() {
         onClick={() => joinTeam(CONST_CARDS.BLUE)}
         hasTurn={cluegiverBlueTurn}
         lastClue={lastBlueClue}
+        hintToggle={hintToggle}
       />
       <Cluegiver
         team={CONST_CARDS.RED}
@@ -98,6 +99,7 @@ export default function CluegiverContainer() {
         onClick={() => joinTeam(CONST_CARDS.RED)}
         hasTurn={cluegiverRedTurn}
         lastClue={lastRedClue}
+        hintToggle={hintToggle}
       />
     </div>
   );

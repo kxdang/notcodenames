@@ -8,13 +8,12 @@ import { CONST_CARDS, CONST_GAME_STATE, CONST_LOBBY_STATE } from "./Constant";
 import _ from "lodash";
 import Words from "./Words";
 
-export default function Board({ size }) {
+export default function Board({ size, hintToggle }) {
   const lobby = useContext(userContext);
   const [numTotalRedCards, setNumTotalRedCards] = useState(Infinity);
   const [numTotalBlueCards, setNumTotalBlueCards] = useState(Infinity);
   const [numRemainingRedCards, setNumRemainingRedCards] = useState(Infinity);
   const [numRemainingBlueCards, setNumRemainingBlueCards] = useState(Infinity);
-
 
   const winningTeam = () => {
     if (numRemainingRedCards === 0) return CONST_CARDS.RED;
@@ -390,6 +389,7 @@ export default function Board({ size }) {
           lobby.cards.map(card => (
             <Card
               isCluegiver={isCluegiver}
+              hintToggle={hintToggle}
               cardName={card}
               key={card}
               gameState={gameState}

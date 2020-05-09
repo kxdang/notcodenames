@@ -5,13 +5,16 @@ import {
   CONST_LOBBY_STATE
 } from "./Constant";
 
+import { database, auth } from "./firebase";
+
 export default function Cluegiver({
   team,
   player,
   lobbyState,
   onClick,
   hasTurn,
-  lastClue
+  lastClue,
+  hintToggle,
 }) {
   const getTeamName = () => {
     switch (team) {
@@ -35,6 +38,8 @@ export default function Cluegiver({
     }
   };
 
+  const uid = auth && auth.currentUser && auth.currentUser.uid;
+
   const getContent = () => {
     return (
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -42,6 +47,7 @@ export default function Cluegiver({
           {player ? player.name : "Click to join"}
         </div>
         <div className="role-secondary">as {getTeamName()} Cluegiver</div>
+        <button onClick={hintToggle}>Toggle Colours</button>
       </div>
     );
   };
@@ -71,6 +77,7 @@ export default function Cluegiver({
             display: lastClue && lastClue.word ? "block" : "none"
           }}
         >
+
           <span style={{ whiteSpace: "nowrap" }}>Last clue:</span> <br />{" "}
           {lastClue && lastClue.word.toUpperCase()} (
           {lastClue && lastClue.count})

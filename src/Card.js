@@ -13,6 +13,7 @@ export default function Card({
   onMouseLeave,
   handleClick,
   isCluegiver,
+  hintToggle,
   gameState
 }) {
   const [tippyInstance, setTippyInstance] = useState(null);
@@ -136,13 +137,13 @@ export default function Card({
         onMouseLeave={() => onMouseLeave(cardName)}
         onClick={onClick}
       >
-        <div style={{ color: getColorForGuess() }}>▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</div>
+        <div style={{ color: hintToggle ? getColorForGuess() : "#dbdbdb" }}>▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</div>
         <div>
           {showSkull && "☠️"}
           <span className="Card-text">{cardName}</span>
           {showSkull && "☠️"}
         </div>
-        <div style={{ color: getColorForGuess() }}>▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</div>
+        <div style={{ color: hintToggle ? getColorForGuess() : "#dbdbdb" }}>▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</div>
       </div>
     );
   }
