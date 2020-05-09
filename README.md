@@ -1,4 +1,4 @@
-# <center> Not Codenames </center>
+# Not Codenames
 
 A weekend projected created by Adrian and Kien! We wanted to build a better alternatives to the other sites we used and implemented the features we would like to see in our own project. Built with React and Firebase.
 
@@ -14,21 +14,21 @@ Features:
 
 Full game at https://notcodenames.com!
 
-## <center> Gameplay </center>
----
-#### <center> Lobby System </center>
+## Gameplay
+
+#### Lobby System
 
 <p align="center">
   <a href="https://notcodenames.com"><img src="./startgame.gif"></a>
 </p>
 
-#### <center> Blue Cluegiver's Screen </center>
+#### Blue Cluegiver's Screen
 
 <p align="center">
   <a href="https://notcodenames.com"><img src="./blueclue.gif"></a>
 </p>
 
-#### <center> Blue Team's Screen </center>
+#### Blue Team's Screen
 
 <p align="center">
   <a href="https://notcodenames.com"><img src="./blueguess.gif"></a>
