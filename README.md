@@ -1,8 +1,10 @@
 # Not Codenames
 
-A weekend projected created by Adrian and Kien! We wanted to build a better alternatives to the other sites we used and implemented the features we would like to see in our own project. Built with React and Firebase.
+A weekend projected created by Adrian and Kien! We wanted to build a better alternatives to the other sites we used and implemented the features we would like to see in our own project. 
 
-We have opened-sourced this project, feel free to contribute!
+- Built with React and Firebase
+
+We have open-sourced this project, feel free to contribute!
 
 Features:
 - Turn based (Yellow highlight border to signify whose turn it is)
