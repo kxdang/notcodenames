@@ -8,19 +8,19 @@ import { CONST_CARDS, CONST_GAME_STATE, CONST_LOBBY_STATE } from "./Constant";
 import _ from "lodash";
 import Words from "./Words";
 
-export default function Board({ size }) {
+export default function Board({ size, hintToggle }) {
   const lobby = useContext(userContext);
   const [numTotalRedCards, setNumTotalRedCards] = useState(Infinity);
   const [numTotalBlueCards, setNumTotalBlueCards] = useState(Infinity);
   const [numRemainingRedCards, setNumRemainingRedCards] = useState(Infinity);
   const [numRemainingBlueCards, setNumRemainingBlueCards] = useState(Infinity);
 
-
   const winningTeam = () => {
     if (numRemainingRedCards === 0) return CONST_CARDS.RED;
     if (numRemainingBlueCards === 0) return CONST_CARDS.BLUE;
 
-    const blackCard = lobby.cards.filter(
+
+    const blackCard = lobby.cards && lobby.cards.filter(
       x => cardState[x].actual === CONST_CARDS.BLACK
     );
     const winnerFromBlackOutcome = lobby.cardState && lobby.cardState[blackCard] && lobby.cardState[blackCard].guessByTeam === CONST_CARDS.RED ? CONST_CARDS.BLUE : CONST_CARDS.RED;
@@ -126,7 +126,7 @@ export default function Board({ size }) {
             />
           );
         } else {
-          role = `Waiting for Blue Cluegiver to provide a clue`;
+          role = <div>Waiting for <span style={{ color: "var(--blue)", fontWeight: "bold" }}>Blue Cluegiver</span> to provide a clue</div>;
         }
         break;
       case CONST_GAME_STATE.PLAYER_BLUE:
@@ -142,8 +142,8 @@ export default function Board({ size }) {
               }}
             >
               <div>
-                Blue Guessers have to find {numRemainingBlueCards} more cards
-                with hint "{word.toUpperCase()}" ({count})
+                Blue Guessers have to find <span style={{ color: "var(--blue)", fontWeight: "bold" }}>({count})</span> {count > 1 ? "cards " : "card "}
+                with the hint "<span style={{ color: "var(--blue)", fontWeight: "bold" }}>{word.toUpperCase()}</span>"
               </div>
               {canEndTurn && (
                 <button className="btn-small btn-end" onClick={incrementTurn}>
@@ -165,7 +165,7 @@ export default function Board({ size }) {
             />
           );
         } else {
-          role = "Waiting for Red Cluegiver to provide a clue";
+          role = <div>Waiting for <span style={{ color: "var(--red)", fontWeight: "bold" }}>Red Cluegiver</span> to provide a clue</div>;
         }
         break;
       case CONST_GAME_STATE.PLAYER_RED: {
@@ -181,8 +181,8 @@ export default function Board({ size }) {
               }}
             >
               <div>
-                Red Guessers have to find {numRemainingRedCards} more cards with
-                hint "{word.toUpperCase()}" ({count})
+                Red Guessers have to find <span style={{ color: "var(--red)", fontWeight: "bold" }}>({count})</span> {count > 1 ? "cards " : "card "}
+                with the hint "<span style={{ color: "var(--red)", fontWeight: "bold" }}>{word.toUpperCase()}</span>"
               </div>
               {canEndTurn && (
                 <button className="btn-small btn-end" onClick={incrementTurn}>
@@ -390,6 +390,7 @@ export default function Board({ size }) {
           lobby.cards.map(card => (
             <Card
               isCluegiver={isCluegiver}
+              hintToggle={hintToggle}
               cardName={card}
               key={card}
               gameState={gameState}

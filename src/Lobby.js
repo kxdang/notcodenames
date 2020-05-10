@@ -27,6 +27,12 @@ const Lobby = () => {
       .toLowerCase()
   );
   const [uid, setUid] = useState(null);
+  const [hintToggle, setHintToggle] = useState(true)
+
+  const toggleHint = () => {
+    setHintToggle(!hintToggle)
+  }
+
 
   auth.onAuthStateChanged((user) => {
     if (user) {
@@ -132,6 +138,7 @@ const Lobby = () => {
     // eslint-disable-next-line
   }, [uid]);
 
+
   return (
     <div style={{ position: "relative" }}>
       <div className="Lobby">
@@ -152,11 +159,11 @@ const Lobby = () => {
         </div>
 
         <userContext.Provider value={lobby}>
-          <CluegiverContainer />
+          <CluegiverContainer hintToggle={toggleHint} />
           {lobby.state === 0 ? (
             <StartScreen lobbyId={lobbyId} />
           ) : (
-              <Board size={5} />
+              <Board size={5} hintToggle={hintToggle} />
             )}
           <TeamContainer />
         </userContext.Provider>
