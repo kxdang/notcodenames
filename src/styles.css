@@ -111,13 +111,22 @@
 }
 
 .Team-container {
-  display: grid;
+  /* display: grid; */
+  display:flex;
+  flex-direction: column;
+  
 }
 
 .Team {
   display: flex;
   justify-content: center;
-  grid-template-rows: 2rem auto;
+  flex-grow: 1;
+  
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+
+  /* grid-template-rows: 2rem auto; */
 }
 
 .Team-title {
@@ -131,8 +140,9 @@
 }
 
 .Team-playerName {
-  display: flex;
-  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 
 /* style={{

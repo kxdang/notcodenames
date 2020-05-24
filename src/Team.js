@@ -78,7 +78,7 @@ export default function Team({ team, players, lobbyState, onClick, hasTurn }) {
           }}
         >
           {takePlayers.map(player => (
-            <div key={player.id}>{player.name}</div>
+            <div key={player.id}>{player.name.substring(0, 12)}</div>
           ))}
           {hasMoreThanNPlayers && " and more..."}
         </span>
