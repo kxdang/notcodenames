@@ -1,6 +1,6 @@
 # Not Codenames
 
-A weekend projected created by Adrian and Kien! We wanted to build a better alternatives to the other sites we used and implemented the features we would like to see in our own project. 
+A weekend projected created by Adrian and I 😊. We wanted to build a better alternatives to the other sites we used and implemented the features we would like to see in our own project. 
 
 - Built with React and Firebase
 
@@ -37,4 +37,8 @@ Full game at https://notcodenames.com!
 </p>
 
 - Automatically ends the blue's turn for picking the wrong card!
+
+For a temporary timer solution, I recommend using [Cuckoo](https://cuckoo.team/) to set your desired time. It sync's across all players of your game.
+
+Have fun!
 
