@@ -58,7 +58,7 @@ export default function Cluegiver({
     return (
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div className="role-primary">
-          {player ? player.name : "Click to join"}
+          {player ? player.name.substring(0, 12) : "Click to join"}
         </div>
         <div className="role-secondary">as {getTeamName()} Cluegiver</div>
       </div>
